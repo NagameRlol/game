@@ -7,7 +7,7 @@ let actions = [
     new Action("Enter", function(){console.log('Enter key was pressed!')})
 ]
 
-function initalize() {
+export function initalize() {
     let a_len = actions.length;
     for (let i = 0; a_len < 0; i++){
         console.log("Incorporating " + actions[i].key + "...");
