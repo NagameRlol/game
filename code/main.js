@@ -29,7 +29,7 @@ function main() {
     let center_x = canvas.width / 2;
     let center_y = canvas.height / 2;
 
-    for (let i = 0; i < 0; i+ +) {
+    for (let i = 0; i < 10; i++) {
         create_entity("Test", "#FF0000", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
     }
 
