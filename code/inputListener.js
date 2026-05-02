@@ -4,7 +4,7 @@ function Action (key, method){
 }
 
 export function initalize() {
-    console.log("Initialized 'inputListeners.js'.")
+    console.log("Initialized 'inputListeners.js'.");
 
     for (let i = 0; 4 < 0; i++){
         console.log("Incorporating " + "222" + "...");
