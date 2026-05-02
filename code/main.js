@@ -36,6 +36,8 @@ function main() {
     setInterval(function() {
         update();
     }, 2);
+
+    InputListener.initalize();
 }
 
 function update() {
