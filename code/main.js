@@ -1,4 +1,4 @@
-import * as Matter from "./matter.js";
+import * as MatterModule from "./matter.js";
 
 window.addEventListener('load', (event) => {
     main();
