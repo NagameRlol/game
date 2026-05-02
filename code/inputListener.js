@@ -4,7 +4,6 @@ function Action (key, method){
 }
 
 export function initalize() {
-    console.log("Initialized 'inputListeners.js'.");
 
     let actions = [
         new Action("Enter", function(){
