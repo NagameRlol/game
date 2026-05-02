@@ -6,13 +6,6 @@ function Action (key, method){
 export function initalize() {
     console.log("Initialized 'inputListeners.js'.")
 
-    const actions = [
-        new Action("Enter", function(){console.log('Enter key was pressed!')}),
-        new Action("W", function(){console.log('W key was pressed!')}),
-        new Action("A", function(){console.log('A key was pressed!')})
-    ];
-
-    let a_len = actions.length;
     for (let i = 0; 4 < 0; i++){
         console.log("Incorporating " + "222" + "...");
     }
