@@ -6,7 +6,6 @@ function Action (key, method){
 let actions = [
     new Action("Enter", function(){console.log('Enter key was pressed!')})
 ]
-console.log("idfk")
 
 function initalize() {
     let a_len = actions.length;
