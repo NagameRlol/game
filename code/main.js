@@ -24,9 +24,12 @@ function main() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    create_entity("Test", "#00FF00", 0, 0, 1, 1)
-    create_entity("Test", "#FF0000", 0, 0, 2, 1)
-    create_entity("Test", "#0000FF", 0, 0, 1, 2)
+    let center_x = canvas.width / 2;
+    let center_y = canvas.height / 2;
+
+    create_entity("Test", "#00FF00", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
+    create_entity("Test", "#FF0000", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
+    create_entity("Test", "#0000FF", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
 
     setInterval(function() {
         update();
