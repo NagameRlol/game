@@ -1,5 +1,3 @@
-import * as MatterModule from "./matter.js";
-
 window.addEventListener('load', (event) => {
     main();
 });
