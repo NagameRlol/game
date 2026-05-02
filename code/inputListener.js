@@ -7,7 +7,7 @@ export function initalize() {
     console.log("Initialized 'inputListeners.js'.")
 
     let actions = [
-        new Action("Enter", function(){console.log('Enter key was pressed!')})
+        new Action("Enter", console.log('Enter key was pressed!'))
     ];
 
     let a_len = actions.length;
