@@ -4,7 +4,7 @@ function Action (key, method){
 }
 
 let actions = [
-    new Action("Enter", console.log('Enter key was pressed!'))
+    new Action("Enter", function(){console.log('Enter key was pressed!')})
 ]
 
 for (let i = 0; actions.length > 0; i++){
