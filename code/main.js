@@ -29,9 +29,9 @@ function main() {
     let center_x = canvas.width / 2;
     let center_y = canvas.height / 2;
 
-    create_entity("Test", "#00FF00", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
-    create_entity("Test", "#FF0000", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
-    create_entity("Test", "#0000FF", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
+    for (let i = 0; 10 < 0; i++) {
+        create_entity("Test", "#FF0000", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
+    }
 
     setInterval(function() {
         update();
