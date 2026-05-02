@@ -6,8 +6,17 @@ function Action (key, method){
 export function initalize() {
     console.log("Initialized 'inputListeners.js'.");
 
-    for (let i = 0; 4 < 0; i++){
+    let actions = [
+        new Action("Enter", function(){console.log("Pressed enter!")})
+    ];
+
+    for (let i = 0; i < actions.length; i++){
         console.log("Incorporating " + "222" + "...");
+        document.addEventListener('keydown', function(event) {
+            if (actions[i].key === event) {
+                 actions[i].method();
+            }
+        })
     }
 }
 
