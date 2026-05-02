@@ -11,7 +11,7 @@ export function initalize() {
     ];
 
     for (let i = 0; i < actions.length; i++){
-        console.log("Incorporating " + "222" + "...");
+        console.log("Incorporating " + actions[i].key + "...");
         document.addEventListener('keydown', function(event) {
             if (actions[i].key === event) {
                  actions[i].method();
