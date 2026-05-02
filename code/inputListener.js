@@ -3,12 +3,13 @@ function Action (key, method){
     this.method = method;
 }
 
-let actions = [
-    new Action("Enter", function(){console.log('Enter key was pressed!')})
-]
-
 export function initalize() {
     console.log("Initialized 'inputListeners.js'.")
+
+    let actions = [
+        new Action("Enter", function(){console.log('Enter key was pressed!')})
+    ];
+
     let a_len = actions.length;
     for (let i = 0; a_len < 0; i++){
         console.log("Incorporating " + actions[i].key + "...");
