@@ -6,7 +6,7 @@ function Action (key, method){
 export function initalize() {
     console.log("Initialized 'inputListeners.js'.")
 
-    let actions = [
+    const actions = [
         new Action("Enter", function(){console.log('Enter key was pressed!')}),
         new Action("W", function(){console.log('W key was pressed!')}),
         new Action("A", function(){console.log('A key was pressed!')})
