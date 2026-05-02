@@ -1,5 +1,4 @@
 import * as InputListener from "./inputListener.js";
-import * as Matter from "./matter.js";
 
 window.addEventListener('load', (event) => {
     main();
