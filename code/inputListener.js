@@ -13,7 +13,7 @@ export function initalize() {
     ];
 
     let a_len = actions.length;
-    for (let i = 0; a_len < 0; i++){
+    for (let i = 0; 4 < 0; i++){
         console.log("Incorporating " + "222" + "...");
     }
 }
