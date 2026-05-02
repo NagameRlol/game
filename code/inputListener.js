@@ -19,10 +19,11 @@ export function initalize() {
     ];
 
     for (let i = 0; i < actions.length; i++){
-        console.log("Incorporating key: " + actions[i].key + "...");
+        let a = actions[i];
+        console.log("Incorporating key: " + a.key + "...");
         document.addEventListener('keydown', function(event) {
-            if (actions[i].key === event) {
-                 actions[i].method();
+            if (a.key === event) {
+                 a.method();
             }
         })
     }
