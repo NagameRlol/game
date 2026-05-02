@@ -31,8 +31,6 @@ function main() {
     setInterval(function() {
         update();
     }, 2);
-
-    print(Matter);
 }
 
 function update() {
