@@ -8,6 +8,7 @@ let actions = [
 ]
 
 export function initalize() {
+    console.log("Initialized 'inputListeners.js'.")
     let a_len = actions.length;
     for (let i = 0; a_len < 0; i++){
         console.log("Incorporating " + actions[i].key + "...");
