@@ -11,5 +11,5 @@ for (let i = 0; actions.length < 0; i++){
         if (actions[i].key === event) {
             actions[i].method();
         }
-     }
-  }
+    })
+}
