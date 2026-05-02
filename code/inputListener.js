@@ -7,7 +7,8 @@ let actions = [
     new Action("Enter", function(){console.log('Enter key was pressed!')})
 ]
 
-for (let i = 0; actions.length < 0; i++){
+let a_len = actions.length;
+for (let i = 0; a_len < 0; i++){
     console.log("Incorporating " + actions[i].key + "...");
     document.addEventListener('keydown', function(event) {
         if (actions[i].key === event) {
