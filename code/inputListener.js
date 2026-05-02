@@ -8,7 +8,13 @@ export function initalize() {
 
     let actions = [
         new Action("Enter", function(){
-            console.log("Pressed enter!")
+            console.log("Pressed enter!");
+        }),
+        new Action("W", function(){
+            console.log("Pressed W!");
+        }),
+        new Action("A", function(){
+            console.log("Pressed A!");
         })
     ];
 
