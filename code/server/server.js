@@ -23,6 +23,8 @@ setInterval(function() {
 
 let server_entities = [];
 
+create_entity(-1, "Test", "#FF0000", 0, 0, 0, 0, 30, false)
+
 function Entity () {
     this.id = -1;
     this.name = "Entity";
