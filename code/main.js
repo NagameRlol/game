@@ -24,7 +24,7 @@ function Entity () {
     this.size = 20;
     this.controllable = false;
     this.speed = 0.1;
-    this.drag = 0.6;
+    this.drag = 0.99;
 } 
 
 function main() {
@@ -72,7 +72,7 @@ function update() {
         e.y += e.vy;
 
         e.vx *= e.drag;
-        e.vy *= 0.8
+        e.vy *= e.drag;
         
         if (e.controllable) {
             if (m_array[0]) {
