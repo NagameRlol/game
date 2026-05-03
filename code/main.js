@@ -6,9 +6,12 @@ window.addEventListener('load', (event) => {
 });
 
 let entities = [];
+
 let canvas;
+
 let ctx;
-let input = new InputListener;
+
+let input;
 
 function Entity () {
     this.name = "Entity";
@@ -27,7 +30,8 @@ function main() {
 
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
-
+    input = new InputListener;
+    
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
