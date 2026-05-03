@@ -24,7 +24,7 @@ function Entity () {
     this.size = 20;
     this.controllable = false;
     this.speed = 0.1;
-    this.drag = 0.99;
+    this.drag = 0.9;
 } 
 
 function main() {
@@ -41,13 +41,14 @@ function main() {
 
     for (let i = 0; i < 10; i++) {
         let r_color = Math.floor(Math.random() * 16777215).toString(16);
+        let sling = 10;
         create_entity(
             "Test", 
             r_color, 
             Math.random() * center_x + center_x / 2, 
             Math.random() * center_y + center_y / 2, 
-            Math.random() * 0.1 - 0.05, 
-            Math.random() * 0.1 - 0.05,
+            Math.random() * sling - sling / 2, 
+            Math.random() * sling - sling / 2,
             Math.random() * 40,
             false
         )
