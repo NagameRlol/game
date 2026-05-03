@@ -1,5 +1,6 @@
 export function initialize() {
     const main = document.getElementById("mainscript");
+    console.log(main);
 
     const actions = {
         "a": [
