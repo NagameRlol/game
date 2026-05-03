@@ -13,7 +13,7 @@ let websockets = [];
 wss.on("connection", (ws) => {
   console.log("A client connected.");
   ws.send("Client connected.");
-  websockets.push(ws)
+  websockets.push(ws);
 });
 
 server.listen(3000, "0.0.0.0", () => {
@@ -71,7 +71,8 @@ function update() {
   
   websockets.forEach((ws) => {
     ws.send(JSON.stringify({
-      type: "update"
+      type: "update",
+      entities: server_entities
     }));
   });
 }
