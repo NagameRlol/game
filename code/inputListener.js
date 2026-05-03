@@ -1,6 +1,7 @@
+import * as Main from "./main.js";
+
 export function initialize() {
-    const main = document.getElementById("mainscript");
-    console.log(main.m_array);
+    console.log(Main.m_array);
 
     const actions = {
         "a": [
