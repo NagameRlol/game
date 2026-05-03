@@ -8,7 +8,7 @@ ws.onmessage = (m) => {
     let m_data = JSON.parse(m.data);
     switch (m_data.type) {
         case "update":
-            console.log("Recieved an 'update' type server message!")
+            
             break;
     }
 };
