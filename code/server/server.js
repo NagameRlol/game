@@ -12,7 +12,7 @@ wss.on("connection", (ws) => {
   console.log("CLIENT CONNECTED");
   ws.send(
     {
-      dodoo: "doo doo",
+      "dodoo": "doo doo",
     }
   );
 });
