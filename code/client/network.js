@@ -5,7 +5,7 @@ const ws = new WebSocket(
 ws.onopen = () => console.log("Opened connection.");
 ws.onmessage = (m) => {
     console.log("Recieved server message: ", m.data);
-    let m_data = JSON.parse(m_data)
+    let m_data = JSON.parse(m.data);
     switch (m_data.type) {
         case "update":
             console.log("Recieved an 'update' type server message!")
