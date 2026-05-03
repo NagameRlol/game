@@ -104,7 +104,8 @@ function draw() {
         
         ctx.fillStyle = e.color;
         ctx.strokeStyle = "black";
-
+        ctx.lineWidth = 4;
+        
         ctx.beginPath();
         ctx.roundRect(rx, ry, e.size, e.size, e.size / 4);
         ctx.fill();
