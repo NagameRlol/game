@@ -57,7 +57,7 @@ function main() {
         update();
     }, 2);
 
-    input.initialize();
+    InputListener.initialize();
 }
 
 function update() {
