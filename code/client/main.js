@@ -48,7 +48,6 @@ function draw() {
         ctx.roundRect(rx, ry, e.size, e.size, e.size / 4);
         ctx.fill();
         ctx.stroke();
-    
     }
 }
 

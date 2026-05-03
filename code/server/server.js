@@ -22,7 +22,7 @@ server.listen(3000, "0.0.0.0", () => {
 });
 
 setInterval(function() {
-        update();
+  update();
 }, 2);
 
 let server_entities = [];
