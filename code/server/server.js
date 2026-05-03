@@ -37,7 +37,7 @@ function Entity () {
     this.drag = 0.97;
 } 
 
-function update() {
+function update(ws) {
   let e_len = server_entities.length;
   for (let i = 0; i < e_len; i++) {
     let e = server_entities[i];
@@ -64,7 +64,7 @@ function update() {
     };
   };
 
-  wss.send(JSON.stringify({
+  ws.send(JSON.stringify({
     type: "update"
   }));
 }
