@@ -1,3 +1,5 @@
+import { local_entities } from "./main.js";
+
 const ws = new WebSocket(
   "wss://literate-telegram-44g6746wrp3qxrg-3000.app.github.dev/"
 );

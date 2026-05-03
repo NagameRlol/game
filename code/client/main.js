@@ -4,7 +4,7 @@ import * as Network from "./network.js";
 
 window.addEventListener('load', (event) => main());
 
-let local_entities = [];
+export let local_entities = [];
 let canvas;
 let ctx;
 
