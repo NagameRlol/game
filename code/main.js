@@ -44,8 +44,8 @@ function main() {
             r_color, 
             Math.random() * center_x + center_x / 2, 
             Math.random() * center_y + center_y / 2, 
-            Math.random() - 0.5, 
-            Math.random() - 0.5,
+            Math.random() * 0.1 - 0.05, 
+            Math.random() * 0.1 - 0.05,
             Math.random() * 40,
             false
         )
@@ -85,7 +85,7 @@ function draw() {
         let e = entities[i];
         
         ctx.fillStyle = e.color;
-        ctx.fillRect(e.x, e.y, 20, 20);
+        ctx.fillRect(e.x - e.size / 2, e.y - e.size / 2, e.size, e.size);
     }
 }
 
