@@ -10,11 +10,11 @@ const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
   console.log("A client connected.");
-  ws.send("");
+  ws.send("Client connected.");
 });
 
 server.listen(3000, "0.0.0.0", () => {
-  console.log("LISTENING ON 3000");
+  console.log("Listening on port: 3000.");
 });
 
 setInterval(function() {
