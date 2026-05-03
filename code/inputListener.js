@@ -3,9 +3,9 @@ let m_array = [false, false, false, false];
 
 export function initialize() {
     const actions = {
-        "a": [
+        "w": [
                 () => console.log("Pressed the W key!"),
-                () => console.log("Released the W key!"}
+                () => console.log("Released the W key!")
             ]
     };
 
