@@ -97,20 +97,6 @@ function draw() {
     }
 }
 
-function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
-    let e = new Entity;
-    e.id = id;
-    e.name = name;
-    e.color = color;
-    e.x = x;
-    e.y = y;
-    e.vx = vx;
-    e.vy = vy;
-    e.size = size;
-    e.controllable = controllable;
-    entities.push(e);
-}
-
 // NETWORK
 
 const ws = new WebSocket(
