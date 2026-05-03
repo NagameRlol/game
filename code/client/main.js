@@ -1,5 +1,6 @@
 import * as InputListener from "./inputListener.js";
 import * as Utils from "./utils.js";
+import * as Network from "./network.js";
 
 window.addEventListener('load', (event) => main());
 
@@ -11,8 +12,6 @@ let ctx;
 export let m_array = [false, false, false, false];
 
 function main() {
-    console.log("The 'main()' function is running.");
-
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
 
