@@ -12,7 +12,7 @@ let canvas;
 let ctx;
 
 // m_array[0] is left, m_array[1] is right, m_array[2] is up and m_array[3] is down.
-let m_array = [false, false, false, false];
+export let m_array = [false, false, false, false];
 
 function Entity () {
     this.name = "Entity";
