@@ -6,13 +6,13 @@ const ws = new WebSocket(
 
 ws.onopen = () => console.log("Opened connection.");
 ws.onmessage = (m) => {
-    console.log("Recieved server message: ", m.data);
     let m_data = JSON.parse(m.data);
     switch (m_data.type) {
         case "update":
             set_local_entities(m_data.entities);
             break;
     }
+    console.log("MSG: " + m_data.context)
 };
 ws.onerror = (e) => console.log("Connection error!", e);
 ws.onclose = () => console.log("Closed connection.");

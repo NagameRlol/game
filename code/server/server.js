@@ -9,10 +9,21 @@ const server = http.createServer((req, res) => {
 const wss = new WebSocket.Server({ server });
 
 let websockets = [];
+let players = [];
+
+function Player() {
+  this.socket;
+  this.id;
+  this.username;
+  this.entity;
+}
 
 wss.on("connection", (ws) => {
   console.log("A client connected.");
-  ws.send("Client connected.");
+  ws.send(JSON.stringify({
+    type: "msg",
+    context: "Client connected."
+  }));
   websockets.push(ws);
 });
 
@@ -26,7 +37,7 @@ setInterval(() => {
 
 let server_entities = [];
 
-create_entity(-1, "Test", "#FF0000", 0, 0, 0, 0, 30, false)
+create_entity(-1, "Test", "#FF0000", 300, 300, 0, 0, 30, false)
 
 function Entity () {
     this.id = -1;
