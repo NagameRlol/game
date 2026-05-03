@@ -103,7 +103,7 @@ function draw() {
 
         ctx.fillStyle = e.color;
         ctx.fillRect(rx, ry, e.size, e.size);
-        ctx.arc(rx, ry, e.size, 0, TAU);
+        ctx.arc(rx, ry, e.size, 0, Math.TAU);
     }
 }
 
