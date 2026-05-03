@@ -58,8 +58,6 @@ function main() {
     setInterval(function() {
         update();
     }, 2);
-
-    InputListener.initialize();
 }
 
 function update() {
