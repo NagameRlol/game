@@ -2,9 +2,7 @@ import * as InputListener from "./inputListener.js";
 import * as Utils from "./utils.js";
 import * as Network from "./network.js";
 
-window.addEventListener('load', (event) => {
-    main();
-});
+window.addEventListener('load', (event) => main());
 
 let entities = [];
 
