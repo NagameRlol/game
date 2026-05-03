@@ -24,6 +24,7 @@ function Entity () {
     this.size = 20;
     this.controllable = false;
     this.speed = 0.1;
+    this.drag = 0.6;
 } 
 
 function main() {
@@ -69,19 +70,22 @@ function update() {
 
         e.x += e.vx;
         e.y += e.vy;
+
+        e.vx *= e.drag;
+        e.vy *= 0.8
         
         if (e.controllable) {
             if (m_array[0]) {
-                e.x -= e.speed;
+                e.vx -= e.speed;
             };
             if (m_array[1]) {
-                e.x += e.speed;
+                e.vx += e.speed;
             };
             if (m_array[2]) {
-                e.y += e.speed;
+                e.vy -= e.speed;
             };
             if (m_array[3]) {
-                e.y -= e.speed;
+                e.vy += e.speed;
             };
         };
 
