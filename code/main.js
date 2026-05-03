@@ -18,6 +18,7 @@ function Entity () {
     this.vy = 0.0;
     this.size = 20;
     this.controllable = false;
+    this.speed = 0.1;
 } 
 
 function main() {
