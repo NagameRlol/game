@@ -21,7 +21,7 @@ function Entity () {
     this.y = 0.0;
     this.vx = 0.0;
     this.vy = 0.0;
-    this.size = 20;
+    this.size = 20.0;
     this.controllable = false;
     this.speed = 0.1;
     this.drag = 0.97;
@@ -98,9 +98,12 @@ function draw() {
     let e_len = entities.length;
     for (let i = 0; i < e_len; i++) {
         let e = entities[i];
-        
+        let rx = e.x - e.size / 2;
+        let ry = e.y - e.size / 2
+
         ctx.fillStyle = e.color;
-        ctx.fillRect(e.x - e.size / 2, e.y - e.size / 2, e.size, e.size);
+        ctx.fillRect(rx, ry, e.size, e.size);
+        ctx.arc(rx, ry, e.size, 0, TAU);
     }
 }
 
