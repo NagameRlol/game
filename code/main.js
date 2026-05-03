@@ -39,7 +39,7 @@ function main() {
         update();
     }, 2);
 
-    InputListener.initalize();
+    InputListener.initialize();
 }
 
 function update() {
