@@ -40,7 +40,8 @@ function main() {
 
     for (let i = 0; i < 10; i++) {
         let r_color = Math.floor(Math.random() * 16777215).toString(16);
-        create_entity("Test", 
+        create_entity(
+            "Test", 
             r_color, 
             Math.random() * center_x + center_x / 2, 
             Math.random() * center_y + center_y / 2, 
@@ -70,7 +71,7 @@ function update() {
         e.y += e.vy;
         
         if (e.controllable) {
-            if (input.m_array[3]) {
+            if (m_array[3]) {
                 e.y -= e.speed;
             };
         };
