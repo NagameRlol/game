@@ -64,12 +64,12 @@ function update() {
         e.x += e.vx;
         e.y += e.vy;
         
-        if e.controllable {
-            if m_array[3] {
+        if (e.controllable) {
+            if (m_array[3]) {
                 e.y -= e.speed;
             };
         };
-        
+
     };
 }
 
