@@ -71,6 +71,15 @@ function update() {
         e.y += e.vy;
         
         if (e.controllable) {
+            if (m_array[0]) {
+                e.x -= e.speed;
+            };
+            if (m_array[1]) {
+                e.x += e.speed;
+            };
+            if (m_array[2]) {
+                e.y += e.speed;
+            };
             if (m_array[3]) {
                 e.y -= e.speed;
             };
