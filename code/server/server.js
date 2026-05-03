@@ -64,7 +64,7 @@ function update() {
     };
   };
 
-  ws.send(JSON.stringify({
+  wss.send(JSON.stringify({
     type: "update"
   }));
 }
