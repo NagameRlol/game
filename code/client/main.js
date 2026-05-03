@@ -4,7 +4,7 @@ import * as Network from "./network.js";
 
 window.addEventListener('load', (event) => main());
 
-export let local_entities = [];
+let local_entities = [];
 let canvas;
 let ctx;
 
@@ -48,4 +48,8 @@ function draw() {
         ctx.fill();
         ctx.stroke();
     };
+}
+
+export function set_local_entities(array) {
+    local_entities = array
 }
