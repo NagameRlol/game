@@ -31,7 +31,6 @@ function main() {
 
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
-    input = new InputListener;
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
