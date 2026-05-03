@@ -63,6 +63,10 @@ function update() {
         };
     };
   };
+
+  ws.send(JSON.stringify({
+    type: "update"
+  }));
 }
 
 function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
