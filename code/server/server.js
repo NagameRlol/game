@@ -20,9 +20,9 @@ server.listen(3000, "0.0.0.0", () => {
   console.log("Listening on port: 3000.");
 });
 
-setInterval(function() {
+setInterval(() => {
   update();
-}, 2);
+}, 10);
 
 let server_entities = [];
 
