@@ -29,33 +29,6 @@ function main() {
 
 function update() {
     draw();
-
-    let e_len = entities.length;
-    for (let i = 0; i < e_len; i++) {
-        let e = entities[i];
-
-        e.x += e.vx;
-        e.y += e.vy;
-
-        e.vx *= e.drag;
-        e.vy *= e.drag;
-        
-        if (e.controllable) {
-            if (m_array[0]) {
-                e.vx -= e.speed;
-            };
-            if (m_array[1]) {
-                e.vx += e.speed;
-            };
-            if (m_array[2]) {
-                e.vy -= e.speed;
-            };
-            if (m_array[3]) {
-                e.vy += e.speed;
-            };
-        };
-
-    };
 }
 
 function draw() {
