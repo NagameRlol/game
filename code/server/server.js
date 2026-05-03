@@ -37,18 +37,30 @@ setInterval(() => {
 
 let server_entities = [];
 
-create_entity(-1, "Test", "#FF0000", 300, 300, 0, 0, 30, false)
+for (let i = 0; i < 10; i++) {
+  let e = create_entity(
+    -1, 
+    "Test", 
+    "#62ff00", 
+    300, 
+    300 + Math.random() * 100.0, 
+    0.5 + Math.random(), 
+    0, 
+    30, 
+    false);
+  e.drag = 1.0;
+}
+
 
 function Entity () {
     this.id = -1;
     this.name = "Entity";
-    this.color = "#FF0000";
+    this.color = "#ff0000";
     this.x = 0.0;
     this.y = 0.0;
     this.vx = 0.0;
     this.vy = 0.0;
     this.size = 20.0;
-    this.controllable = false;
     this.speed = 0.1;
     this.drag = 0.97;
 } 
@@ -88,7 +100,7 @@ function update() {
   });
 }
 
-function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
+function create_entity(id, name, color, x, y, vx, vy, size) {
     let e = new Entity;
     e.id = id;
     e.name = name;
@@ -98,6 +110,6 @@ function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
     e.vx = vx;
     e.vy = vy;
     e.size = size;
-    e.controllable = controllable;
     server_entities.push(e);
+    return e
 }
