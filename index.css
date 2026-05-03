@@ -1,4 +1,7 @@
+body {
+    background-color: rgb(51, 61, 85);
+}
+
 h1 {
     align-content: center;
-    background-color: aqua;
 }
