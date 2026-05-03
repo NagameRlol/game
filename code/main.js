@@ -106,7 +106,7 @@ function draw() {
         
         ctx.beginPath();
         ctx.strokeStyle = "black";
-        ctx.arc(rx, ry, e.size, 0.0, Math.PI * 2.0);
+        ctx.arc(e.x, e.y, e.size / 2, 0.0, Math.PI * 2.0);
         ctx.stroke();
         
     }
