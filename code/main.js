@@ -15,6 +15,7 @@ function Entity () {
     this.y = 0.0;
     this.vx = 0.0;
     this.vy = 0.0;
+    this.size = 50;
 } 
 
 function main() {
@@ -64,7 +65,7 @@ function draw() {
     }
 }
 
-function create_entity(name, color, x, y, vx, vy) {
+function create_entity(name, color, x, y, vx, vy, size) {
     let e = new Entity;
     e.name = name;
     e.color = color;
@@ -72,5 +73,6 @@ function create_entity(name, color, x, y, vx, vy) {
     e.y = y;
     e.vx = vx;
     e.vy = vy;
+    e.size = size;
     entities.push(e);
 }
