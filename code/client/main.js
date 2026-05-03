@@ -3,6 +3,8 @@ import * as Utils from "./utils.js";
 
 window.addEventListener('load', (event) => main());
 
+let test;
+
 let entities = [];
 
 let canvas;
