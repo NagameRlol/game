@@ -42,9 +42,9 @@ function Entity () {
 } 
 
 function update() {
-  let e_len = entities.length;
+  let e_len = server_entities.length;
   for (let i = 0; i < e_len; i++) {
-    let e = entities[i];
+    let e = server_entities[i];
 
     e.x += e.vx;
     e.y += e.vy;
@@ -80,5 +80,5 @@ function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
     e.vy = vy;
     e.size = size;
     e.controllable = controllable;
-    entities.push(e);
+    server_entities.push(e);
 }
