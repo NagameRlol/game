@@ -63,7 +63,9 @@ function update() {
 
         e.x += e.vx;
         e.y += e.vy;
-    }
+    };
+
+    console.log(Utils.m_array)
 }
 
 function draw() {

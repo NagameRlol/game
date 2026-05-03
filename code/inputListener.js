@@ -3,9 +3,21 @@ let m_array = [false, false, false, false];
 
 export function initialize() {
     const actions = {
+        "a": [
+                () => m_array[0] = true,
+                () => m_array[0] = false
+            ],
+        "d": [
+                () => m_array[1] = true,
+                () => m_array[1] = false
+            ],
         "w": [
-                () => console.log("Pressed the W key!"),
-                () => console.log("Released the W key!")
+                () => m_array[2] = true,
+                () => m_array[2] = false
+            ],
+        "s": [
+                () => m_array[3] = true,
+                () => m_array[3] = false
             ]
     };
 
