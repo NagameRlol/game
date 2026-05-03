@@ -33,10 +33,10 @@ function update() {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    let e_len = entities.length;
+    let e_len = local_entities.length;
     for (let i = 0; i < e_len; i++) {
 
-        let e = entities[i];
+        let e = local_entities[i];
         let rx = e.x - e.size / 2;
         let ry = e.y - e.size / 2
         
