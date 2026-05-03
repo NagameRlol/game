@@ -11,7 +11,7 @@ const wss = new WebSocket.Server({ server });
 let websockets = [];
 let players = [];
 
-function Player() {
+function Player(socket, id, username, entity) {
   this.socket;
   this.id;
   this.username;
@@ -25,6 +25,23 @@ wss.on("connection", (ws) => {
     context: "Client connected."
   }));
   websockets.push(ws);
+
+  let id = Math.floor(Math.random() * 999);
+  let entity = create_entity(
+    id,
+    "Entity",
+    "#FF0000",
+    300 + Math.random() * 300.0, 
+    300 + Math.random() * 300.0,
+    0,
+    0, 
+    Math.random() * 15 + 15
+  )
+  let p = new Player(ws, id, "Player", entity);
+});
+
+wss.on("close", (ws) => {
+  console.log("Client disconnected.")
 });
 
 server.listen(3000, "0.0.0.0", () => {
@@ -37,18 +54,18 @@ setInterval(() => {
 
 let server_entities = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 30; i++) {
+  let fling = 2.0;
   let e = create_entity(
     -1, 
     "Test", 
-    "#62ff00", 
-    300, 
-    300 + Math.random() * 100.0, 
-    0.5 + Math.random(), 
-    0, 
+    "#0008ff", 
+    400 + Math.random() * 300.0, 
+    300 + Math.random() * 300.0, 
+    Math.random() * fling - fling / 2, 
+    Math.random() * fling - fling / 2, 
     30, 
     false);
-  e.drag = 1.0;
 }
 
 
@@ -63,6 +80,8 @@ function Entity () {
     this.size = 20.0;
     this.speed = 0.1;
     this.drag = 0.97;
+    this.m_array = [false, false, false, false];
+    this.owner;
 } 
 
 function update() {
@@ -77,16 +96,16 @@ function update() {
     e.vy *= e.drag;
         
     if (e.controllable) {
-        if (m_array[0]) {
+        if (e.m_array[0]) {
             e.vx -= e.speed;
          };
-        if (m_array[1]) {
+        if (e.m_array[1]) {
             e.vx += e.speed;
         };
-        if (m_array[2]) {
+        if (e.m_array[2]) {
              e.vy -= e.speed;
         };
-        if (m_array[3]) {
+        if (e.m_array[3]) {
              e.vy += e.speed;
         };
     };
