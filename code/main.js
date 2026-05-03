@@ -100,12 +100,13 @@ function draw() {
         let e = entities[i];
         let rx = e.x - e.size / 2;
         let ry = e.y - e.size / 2
-
-        ctx.arc(rx, ry, e.size, 0, Math.TAU);
-        ctx.stroke();
         
         ctx.fillStyle = e.color;
         ctx.fillRect(rx, ry, e.size, e.size);
+        
+        ctx.strokeStyle = "black";
+        ctx.arc(rx, ry, e.size, 0, Math.TAU);
+        ctx.stroke();
         
     }
 }
