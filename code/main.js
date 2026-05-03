@@ -103,7 +103,7 @@ function draw() {
         let ry = e.y - e.size / 2
         
         ctx.fillStyle = e.color;
-        ctx.strokeStyle = "darkgray";
+        ctx.strokeStyle = "#232323";
         ctx.lineWidth = 2.5;
 
         ctx.beginPath();
