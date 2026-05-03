@@ -3,28 +3,26 @@ function Action (key, method){
     this.method = method;
 }
 
-export function initalize() {
+export function initialize() {
 
-    let actions = [
-        new Action("Enter", function(){
+    const actions = {
+        "enter": () => {
             console.log("Pressed enter!");
-        }),
-        new Action("W", function(){
+        },
+        "w": () => {
             console.log("Pressed W!");
-        }),
-        new Action("A", function(){
+        },
+        "a": () => {
             console.log("Pressed A!");
-        })
-    ];
+        }
+    };
 
-    for (let i = 0; i < actions.length; i++){
-        let a = actions[i];
-        console.log("Incorporating key: " + a.key + "...");
-        document.addEventListener('keydown', function(event) {
-            if (a.key === event) {
-                 a.method();
-            }
-        })
-    }
+    document.addEventListener('keydown', function(event) {
+        const key = event.key.toLowerCase();
+
+        if (actions[key]) {
+            actions[key]();
+        }
+    });
 }
 
