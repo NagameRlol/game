@@ -66,7 +66,7 @@ function update() {
     };
   };
 
-  wss.send(JSON.stringify({
+  WebSocket.send(JSON.stringify({
     type: "update"
   }));
 }
