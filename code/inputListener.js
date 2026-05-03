@@ -1,8 +1,6 @@
 import * as Main from "./main.js";
 
 export function initialize() {
-    console.log(Main.m_array);
-
     const actions = {
         "a": [
                 () => Main.m_array[0] = true,
