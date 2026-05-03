@@ -103,9 +103,9 @@ function draw() {
         let ry = e.y - e.size / 2
         
         ctx.fillStyle = e.color;
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 4;
-        
+        ctx.strokeStyle = "gray";
+        ctx.lineWidth = 2;
+
         ctx.beginPath();
         ctx.roundRect(rx, ry, e.size, e.size, e.size / 4);
         ctx.fill();
