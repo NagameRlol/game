@@ -30,7 +30,7 @@ function main() {
     let center_y = canvas.height / 2;
 
     for (let i = 0; i < 10; i++) {
-        let r_color = "rgb(Math.random(), Math.random(), Math.random())";
+        let r_color = "rgb(Math.random() * 255, Math.random() * 255, Math.random() * 255)";
         create_entity("Test", r_color, Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
     }
 
