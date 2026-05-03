@@ -1,37 +1,35 @@
-const WebSocket = require('ws');
+const WebSocket = require("ws");
 
-const wss = new WebSocket.Server({ port: 3000 });
+const PORT = 3000;
+const wss = new WebSocket.Server({ port: PORT });
 
-console.log("Server running on ws://localhost:3000");
+let players = {};
 
-// Store connected players
-const players = new Map();
+wss.on("connection", (ws) => {
+  const id = Math.random().toString(36).slice(2);
 
-wss.on('connection', (ws) => {
-  console.log("Player connected");
+  players[id] = { x: 0, y: 0 };
+  console.log("Player connected:", id);
 
-  // Create a player
-  const player = {
-    x: 0,
-    y: 0,
-    id: Math.random().toString(36).substr(2, 9)
-  };
-
-  players.set(ws, player);
-
-  // Receive messages from client
-  ws.on('message', (message) => {
+  ws.on("message", (message) => {
     const data = JSON.parse(message);
 
-    // Example: movement input
-    if (data.type === 'move') {
-      player.x += data.dx;
-      player.y += data.dy;
-    }
+    // update player
+    players[id] = data;
+
+    // broadcast state
+    const state = JSON.stringify(players);
+    wss.clients.forEach(client => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(state);
+      }
+    });
   });
 
-  ws.on('close', () => {
-    players.delete(ws);
-    console.log("Player disconnected");
+  ws.on("close", () => {
+    delete players[id];
+    console.log("Player disconnected:", id);
   });
 });
+
+console.log("WebSocket server running on port", PORT);

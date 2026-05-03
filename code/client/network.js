@@ -1,4 +1,4 @@
-const websocket = new WebSocket("https://nagygame.vercel.app/");
+const websocket = new WebSocket("wss://literate-telegram-44g6746wrp3qxrg.github.dev/");
 
 websocket.addEventListener("open", () => {
   console.log("CONNECTED");
