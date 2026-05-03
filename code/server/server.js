@@ -8,9 +8,12 @@ const server = http.createServer((req, res) => {
 
 const wss = new WebSocket.Server({ server });
 
+let websockets = [];
+
 wss.on("connection", (ws) => {
   console.log("A client connected.");
   ws.send("Client connected.");
+  websockets.push(ws)
 });
 
 server.listen(3000, "0.0.0.0", () => {
@@ -65,10 +68,12 @@ function update() {
         };
     };
   };
-
-  WebSocket.send(JSON.stringify({
-    type: "update"
-  }));
+  
+  websockets.forEach((ws) => {
+    ws.send(JSON.stringify({
+      type: "update"
+    }));
+  });
 }
 
 function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
