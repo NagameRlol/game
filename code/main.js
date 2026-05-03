@@ -97,18 +97,19 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     let e_len = entities.length;
     for (let i = 0; i < e_len; i++) {
+
         let e = entities[i];
         let rx = e.x - e.size / 2;
         let ry = e.y - e.size / 2
         
         ctx.fillStyle = e.color;
-        ctx.fillRect(rx, ry, e.size, e.size);
-        
-        ctx.beginPath();
         ctx.strokeStyle = "black";
-        ctx.arc(e.x, e.y, e.size / 2, 0.0, Math.PI * 2.0);
+
+        ctx.beginPath();
+        ctx.roundRect(rx, ry, e.size, e.size, e.size / 4);
+        ctx.fill();
         ctx.stroke();
-        
+    
     }
 }
 
