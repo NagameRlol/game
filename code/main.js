@@ -14,6 +14,7 @@ let ctx;
 export let m_array = [false, false, false, false];
 
 function Entity () {
+    this.id = -1;
     this.name = "Entity";
     this.color = "#FF0000";
     this.x = 0.0;
@@ -38,21 +39,7 @@ function main() {
     let center_x = canvas.width / 2;
     let center_y = canvas.height / 2;
 
-    for (let i = 0; i < 10; i++) {
-        let r_color = Math.floor(Math.random() * 16777215).toString(16);
-        let sling = 10;
-        create_entity(
-            "Test", 
-            r_color, 
-            Math.random() * center_x + center_x / 2, 
-            Math.random() * center_y + center_y / 2, 
-            Math.random() * sling - sling / 2, 
-            Math.random() * sling - sling / 2,
-            Math.random() * 40,
-            false
-        )
-    }
-    create_entity("Player", "red", 0, 0, 0, 0, 50, true);
+    create_entity(-1, "Player", "red", 0, 0, 0, 0, 50, true);
 
     setInterval(function() {
         update();
@@ -111,8 +98,9 @@ function draw() {
     }
 }
 
-function create_entity(name, color, x, y, vx, vy, size, controllable) {
+function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
     let e = new Entity;
+    e.id = id;
     e.name = name;
     e.color = color;
     e.x = x;
