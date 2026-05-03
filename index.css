@@ -4,5 +4,6 @@ body {
 
 h1 {
     align-content: center;
+    align-self: center;
     font-family: Arial, Helvetica, sans-serif;
 }
