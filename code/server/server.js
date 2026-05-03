@@ -10,7 +10,7 @@ const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
   console.log("CLIENT CONNECTED");
-  ws.send("senddddd");
+  ws.send("senddddd", "multipleee", "messagessss");
 });
 
 server.listen(3000, "0.0.0.0", () => {
