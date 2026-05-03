@@ -1,24 +1,18 @@
 const http = require("http");
 const WebSocket = require("ws");
 
-const server = http.createServer();
-
-const wss = new WebSocket.Server({
-  server,
-  path: "/ws"   // IMPORTANT FIX
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end("OK");
 });
 
-let players = {};
+const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
-  console.log("CONNECTED");
-
-  ws.on("message", (message) => {
-    const data = JSON.parse(message);
-    ws.send(JSON.stringify({ ok: true }));
-  });
+  console.log("CLIENT CONNECTED");
+  ws.send("hello");
 });
 
 server.listen(3000, "0.0.0.0", () => {
-  console.log("Server running on 3000");
+  console.log("LISTENING ON 3000");
 });
