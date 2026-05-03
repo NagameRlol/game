@@ -3,28 +3,12 @@ import * as Utils from "./utils.js";
 
 window.addEventListener('load', (event) => main());
 
-let entities = [];
-
+let local_entities = [];
 let canvas;
-
 let ctx;
 
 // m_array[0] is left, m_array[1] is right, m_array[2] is up and m_array[3] is down.
 export let m_array = [false, false, false, false];
-
-function Entity () {
-    this.id = -1;
-    this.name = "Entity";
-    this.color = "#FF0000";
-    this.x = 0.0;
-    this.y = 0.0;
-    this.vx = 0.0;
-    this.vy = 0.0;
-    this.size = 20.0;
-    this.controllable = false;
-    this.speed = 0.1;
-    this.drag = 0.97;
-} 
 
 function main() {
     console.log("The 'main()' function is running.");
@@ -37,8 +21,6 @@ function main() {
     
     let center_x = canvas.width / 2;
     let center_y = canvas.height / 2;
-
-    create_entity(-1, "Player", "red", 0, 0, 0, 0, 50, true);
 
     setInterval(function() {
         update();
