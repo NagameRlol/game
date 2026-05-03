@@ -1,6 +1,3 @@
-// m_array[0] is left, m_array[1] is right, m_array[2] is up and m_array[3] is down.
-export let m_array = [false, false, false, false];
-
 export function initialize() {
     const actions = {
         "a": [
