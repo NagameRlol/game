@@ -104,8 +104,9 @@ function draw() {
         ctx.fillStyle = e.color;
         ctx.fillRect(rx, ry, e.size, e.size);
         
+        ctx.beginPath();
         ctx.strokeStyle = "black";
-        ctx.arc(rx, ry, e.size, 0, Math.TAU);
+        ctx.arc(rx, ry, e.size, 0.0, Math.PI * 2.0);
         ctx.stroke();
         
     }
