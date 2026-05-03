@@ -1,7 +1,8 @@
+const http = require("http");
 const WebSocket = require("ws");
 
-const PORT = 3000;
-const wss = new WebSocket.Server({ port: PORT });
+const server = http.createServer();
+const wss = new WebSocket.Server({ server });
 
 let players = {};
 
@@ -14,12 +15,11 @@ wss.on("connection", (ws) => {
   ws.on("message", (message) => {
     const data = JSON.parse(message);
 
-    // update player
     players[id] = data;
 
-    // broadcast state
     const state = JSON.stringify(players);
-    wss.clients.forEach(client => {
+
+    wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
         client.send(state);
       }
@@ -32,4 +32,7 @@ wss.on("connection", (ws) => {
   });
 });
 
-console.log("WebSocket server running on port", PORT);
+// IMPORTANT: bind to 0.0.0.0 for Codespaces
+server.listen(3000, "0.0.0.0", () => {
+  console.log("WebSocket server running on port 3000");
+});
