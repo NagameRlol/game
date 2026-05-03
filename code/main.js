@@ -8,6 +8,7 @@ window.addEventListener('load', (event) => {
 let entities = [];
 let canvas;
 let ctx;
+let input = new InputListener;
 
 function Entity () {
     this.name = "Entity";
@@ -51,7 +52,7 @@ function main() {
         update();
     }, 2);
 
-    InputListener.initialize();
+    input.initialize();
 }
 
 function update() {
@@ -65,7 +66,7 @@ function update() {
         e.y += e.vy;
         
         if (e.controllable) {
-            if (m_array[3]) {
+            if (input.m_array[3]) {
                 e.y -= e.speed;
             };
         };
