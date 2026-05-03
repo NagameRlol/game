@@ -1,20 +1,22 @@
 export function initialize() {
+    const main = document.getElementById("mainscript");
+
     const actions = {
         "a": [
-                () => m_array[0] = true,
-                () => m_array[0] = false
+                () => main.m_array[0] = true,
+                () => main.m_array[0] = false
             ],
         "d": [
-                () => m_array[1] = true,
-                () => m_array[1] = false
+                () => main.m_array[1] = true,
+                () => main.m_array[1] = false
             ],
         "w": [
-                () => m_array[2] = true,
-                () => m_array[2] = false
+                () => main.m_array[2] = true,
+                () => main.m_array[2] = false
             ],
         "s": [
-                () => m_array[3] = true,
-                () => m_array[3] = false
+                () => main.m_array[3] = true,
+                () => main.m_array[3] = false
             ]
     };
 
