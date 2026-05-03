@@ -1,6 +1,5 @@
 import * as InputListener from "./inputListener.js";
 import * as Utils from "./utils.js";
-import * as Network from "./network.js";
 
 window.addEventListener('load', (event) => main());
 
@@ -111,3 +110,14 @@ function create_entity(id, name, color, x, y, vx, vy, size, controllable) {
     e.controllable = controllable;
     entities.push(e);
 }
+
+// NETWORK
+
+const ws = new WebSocket(
+  "wss://literate-telegram-44g6746wrp3qxrg-3000.app.github.dev/"
+);
+
+ws.onopen = () => console.log("OPEN");
+ws.onmessage = (m) => console.log("MSG:", m.data);
+ws.onerror = (e) => console.log("ERR", e);
+ws.onclose = () => console.log("CLOSE");
