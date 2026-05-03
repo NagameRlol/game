@@ -1,4 +1,5 @@
 import * as InputListener from "./inputListener.js";
+import * as Utils from "./utils.js";
 
 window.addEventListener('load', (event) => {
     main();
@@ -15,7 +16,8 @@ function Entity () {
     this.y = 0.0;
     this.vx = 0.0;
     this.vy = 0.0;
-    this.size = 50;
+    this.size = 20;
+    this.controllable = false;
 } 
 
 function main() {
@@ -31,9 +33,18 @@ function main() {
     let center_y = canvas.height / 2;
 
     for (let i = 0; i < 10; i++) {
-        let r_color = "rgb(Math.random() * 255, Math.random() * 255, Math.random() * 255)";
-        create_entity("Test", r_color, Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
+        let r_color = Math.floor(Math.random() * 16777215).toString(16);
+        create_entity("Test", 
+            r_color, 
+            Math.random() * center_x + center_x / 2, 
+            Math.random() * center_y + center_y / 2, 
+            Math.random() - 0.5, 
+            Math.random() - 0.5,
+            Math.random() * 40,
+            false
+        )
     }
+    create_entity("Player", "red", 0, 0, 0, 0, 50, true);
 
     setInterval(function() {
         update();
@@ -65,7 +76,7 @@ function draw() {
     }
 }
 
-function create_entity(name, color, x, y, vx, vy, size) {
+function create_entity(name, color, x, y, vx, vy, size, controllable) {
     let e = new Entity;
     e.name = name;
     e.color = color;
@@ -74,5 +85,6 @@ function create_entity(name, color, x, y, vx, vy, size) {
     e.vx = vx;
     e.vy = vy;
     e.size = size;
+    e.controllable = controllable;
     entities.push(e);
 }
