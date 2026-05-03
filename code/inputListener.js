@@ -5,20 +5,20 @@ export function initialize() {
 
     const actions = {
         "a": [
-                () => main.m_array[0] = true,
-                () => main.m_array[0] = false
+                () => Main.m_array[0] = true,
+                () => Main.m_array[0] = false
             ],
         "d": [
-                () => main.m_array[1] = true,
-                () => main.m_array[1] = false
+                () => Main.m_array[1] = true,
+                () => Main.m_array[1] = false
             ],
         "w": [
-                () => main.m_array[2] = true,
-                () => main.m_array[2] = false
+                () => Main.m_array[2] = true,
+                () => Main.m_array[2] = false
             ],
         "s": [
-                () => main.m_array[3] = true,
-                () => main.m_array[3] = false
+                () => Main.m_array[3] = true,
+                () => Main.m_array[3] = false
             ]
     };
 
