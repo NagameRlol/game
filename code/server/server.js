@@ -9,8 +9,8 @@ const server = http.createServer((req, res) => {
 const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
-  console.log("CLIENT CONNECTED");
-  ws.send("senddddd");
+  console.log("A client connected.");
+  ws.send("");
 });
 
 server.listen(3000, "0.0.0.0", () => {
