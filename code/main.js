@@ -31,7 +31,7 @@ function main() {
 
     for (let i = 0; i < 10; i++) {
         let r_color = rgb(Math.random(), Math.random(), Math.random());
-        create_entity("Test", "#FF0000", Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
+        create_entity("Test", r_color, Math.random() * center_x, Math.random() * center_y, Math.random() - 0.5, Math.random() - 0.5)
     }
 
     setInterval(function() {
