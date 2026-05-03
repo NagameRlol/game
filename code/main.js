@@ -24,7 +24,7 @@ function Entity () {
     this.size = 20;
     this.controllable = false;
     this.speed = 0.1;
-    this.drag = 0.9;
+    this.drag = 0.97;
 } 
 
 function main() {
