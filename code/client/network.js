@@ -20,7 +20,7 @@ ws.onmessage = (m) => {
     
     ws.send(JSON.stringify({
         type: "client_update",
-        player: local_player,
+        player_id: local_player.id,
         input: m_array
     }));
 };

@@ -60,9 +60,9 @@ wss.on("connection", (ws) => {
     let data = JSON.parse(m);
     console.log("Recieved: " + m);
     switch (data.type) {
-    case "client_update":
-      let p = find_p_from_id(data.player.id);
-      p.m_array = data.input;
+      case "client_update":
+        let p = find_p_from_id(data.player.id);
+        p.m_array = data.input;
     }; 
   });
 
