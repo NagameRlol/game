@@ -18,7 +18,7 @@ window.addEventListener('load', (event) => {
     let center_y = canvas.height / 2;
 });
 
-function draw() {
+export function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     let e_len = local_entities.length;
     for (let i = 0; i < e_len; i++) {

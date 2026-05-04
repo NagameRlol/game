@@ -42,7 +42,7 @@ wss.on("connection", (ws) => {
   ws.send(JSON.stringify({
     type: "assignPlayer",
     player: p,
-    context: "Assigned player".
+    context: "Assigned player."
   }));
 });
 
