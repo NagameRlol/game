@@ -1,4 +1,4 @@
-import { set_local_entities, draw, m_array } from "./main.js";
+import { set_local_entities, draw, m_array, local_player } from "./main.js";
 
 const ws = new WebSocket(
   "wss://ideal-waffle-944444rv5g4cr5p-3000.app.github.dev/"
@@ -6,17 +6,18 @@ const ws = new WebSocket(
 
 ws.onopen = () => console.log("Opened connection.");
 ws.onmessage = (m) => {
-    let m_data = JSON.parse(m.data);
-    switch (m_data.type) {
+    let data = JSON.parse(m.data);
+    switch (data.type) {
         case "update":
-            set_local_entities(m_data.entities);
+            set_local_entities(data.entities);
             draw();
             break;
     }
-    console.log("MSG: " + m_data.context)
+    console.log("MSG: " + data.context)
 
     ws.send({
         type: "client_update",
+        local_player: local_player,
         input: m_array
     })
 };

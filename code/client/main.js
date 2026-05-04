@@ -1,5 +1,5 @@
 let local_entities = [];
-let local_player;
+export let local_player;
 
 let canvas;
 let ctx;

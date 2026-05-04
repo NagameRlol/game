@@ -12,10 +12,10 @@ let websockets = [];
 let players = [];
 
 function Player(socket, id, username, entity) {
-  this.socket;
-  this.id;
-  this.username;
-  this.entity;
+  this.socket = socket;
+  this.id = id;
+  this.username = username;
+  this.entity = entity;
   this.m_array = [false, false, false, false];
 }
 
@@ -53,17 +53,26 @@ wss.on("connection", (ws) => {
     0, 
     Math.random() * 15 + 15
   )
+
   let p = new Player(ws, id, "Player", entity);
 
-  let safe_p = () => {
-    this.id = p.id;
-  }
   ws.send(JSON.stringify({
     type: "assignPlayer",
-    player: safe_p,
-    context: "Assigned player with id: " + p.id
+    player: () => {
+      this.id = id;
+    },
+    context: "Assigned player with id: " + id
   }));
   entity.owner = p;
+});
+
+wss.on("message", (m) => {
+  let data = JSON.parse(m.data);
+  switch data.type {
+    case "client_update":
+      let p = find_p_from_id(data.local_player.id);
+      p.m_array = data.input;
+  }; 
 });
 
 server.listen(3000, "0.0.0.0", () => {
@@ -115,20 +124,22 @@ function update() {
     e.vx *= e.drag;
     e.vy *= e.drag;
         
-    if (e.controllable) {
-        if (e.m_array[0]) {
-            e.vx -= e.speed;
-         };
-        if (e.m_array[1]) {
-            e.vx += e.speed;
-        };
-        if (e.m_array[2]) {
-             e.vy -= e.speed;
-        };
-        if (e.m_array[3]) {
-             e.vy += e.speed;
-        };
+    if (e.owner.m_array[0]) {
+      e.vx -= e.speed;
     };
+
+    if (e.owner.m_array[1]) {
+      e.vx += e.speed;
+    };
+
+    if (e.owner.m_array[2]) {
+      e.vy -= e.speed;
+    };
+
+    if (e.owner.m_array[3]) {
+      e.vy += e.speed;
+    };
+
   };
   
   players.forEach((p) => {
@@ -138,7 +149,7 @@ function update() {
       context: "Updated"
     }));
   });
-}
+};
 
 function create_entity(id, name, color, x, y, vx, vy, size) {
     let e = new Entity;
