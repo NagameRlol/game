@@ -19,6 +19,14 @@ function Player(socket, id, username, entity) {
   this.m_array = [false, false, false, false];
 }
 
+function find_p_from_ws(targ_ws) {
+  players.forEach((p) => {
+    if (p.ws === targ_ws) {
+      return p;
+    }
+  });
+}
+
 wss.on("connection", (ws) => {
   console.log("A client connected.");
   ws.send(JSON.stringify({
@@ -39,11 +47,16 @@ wss.on("connection", (ws) => {
     Math.random() * 15 + 15
   )
   let p = new Player(ws, id, "Player", entity);
+
+  let safe_p = () => {
+    this.id = p.id;
+  }
   ws.send(JSON.stringify({
     type: "assignPlayer",
-    player: p,
-    context: "Assigned player."
+    player: safe_p,
+    context: "Assigned player with id: " + p.id
   }));
+  entity.owner = p;
 });
 
 wss.on("close", (ws) => {

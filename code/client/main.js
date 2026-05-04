@@ -39,5 +39,5 @@ export function draw() {
 }
 
 export function set_local_entities(array) {
-    local_entities = array
+    local_entities = array;
 }
