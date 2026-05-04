@@ -1,7 +1,7 @@
 import { set_local_entities } from "./main.js";
 
 const ws = new WebSocket(
-  "wss://literate-telegram-44g6746wrp3qxrg-3000.app.github.dev/"
+  "wss://ideal-waffle-944444rv5g4cr5p-3000.app.github.dev/"
 );
 
 ws.onopen = () => console.log("Opened connection.");
