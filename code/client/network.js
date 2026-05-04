@@ -1,4 +1,4 @@
-import { set_local_entities } from "./main.js";
+import { set_local_entities, draw } from "./main.js";
 
 const ws = new WebSocket(
   "wss://ideal-waffle-944444rv5g4cr5p-3000.app.github.dev/"
@@ -10,6 +10,7 @@ ws.onmessage = (m) => {
     switch (m_data.type) {
         case "update":
             set_local_entities(m_data.entities);
+            draw();
             break;
     }
     console.log("MSG: " + m_data.context)

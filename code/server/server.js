@@ -16,6 +16,7 @@ function Player(socket, id, username, entity) {
   this.id;
   this.username;
   this.entity;
+  this.m_array = [false, false, false, false];
 }
 
 wss.on("connection", (ws) => {
@@ -38,6 +39,11 @@ wss.on("connection", (ws) => {
     Math.random() * 15 + 15
   )
   let p = new Player(ws, id, "Player", entity);
+  ws.send(JSON.stringify({
+    type: "assignPlayer",
+    player: p,
+    context: "Assigned player".
+  }));
 });
 
 wss.on("close", (ws) => {
@@ -80,7 +86,6 @@ function Entity () {
     this.size = 20.0;
     this.speed = 0.1;
     this.drag = 0.97;
-    this.m_array = [false, false, false, false];
     this.owner;
 } 
 
@@ -114,7 +119,8 @@ function update() {
   websockets.forEach((ws) => {
     ws.send(JSON.stringify({
       type: "update",
-      entities: server_entities
+      entities: server_entities,
+      context: "Updated"
     }));
   });
 }
