@@ -1,4 +1,4 @@
-import { set_local_entities, draw } from "./main.js";
+import { set_local_entities, draw, m_array } from "./main.js";
 
 const ws = new WebSocket(
   "wss://ideal-waffle-944444rv5g4cr5p-3000.app.github.dev/"
@@ -14,6 +14,11 @@ ws.onmessage = (m) => {
             break;
     }
     console.log("MSG: " + m_data.context)
+
+    ws.send({
+        type: "client_update",
+        input: m_array
+    })
 };
 ws.onerror = (e) => console.log("Connection error!", e);
 ws.onclose = () => console.log("Closed connection.");

@@ -25,7 +25,15 @@ function find_p_from_ws(targ_ws) {
       return p;
     }
   });
-}
+};
+
+function find_p_from_id(id) {
+  players.forEach((p) => {
+    if (p.id === id) {
+      return p;
+    }
+  });
+};
 
 wss.on("connection", (ws) => {
   console.log("A client connected.");
@@ -59,10 +67,6 @@ wss.on("connection", (ws) => {
   entity.owner = p;
 });
 
-wss.on("close", (ws) => {
-  console.log("Client disconnected.")
-});
-
 server.listen(3000, "0.0.0.0", () => {
   console.log("Listening on port: 3000.");
 });
@@ -86,7 +90,6 @@ for (let i = 0; i < 30; i++) {
     30, 
     false);
 }
-
 
 function Entity () {
     this.id = -1;
