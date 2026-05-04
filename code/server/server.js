@@ -41,7 +41,6 @@ wss.on("connection", (ws) => {
     type: "msg",
     context: "Client connected."
   }));
-  websockets.push(ws);
 
   let id = Math.floor(Math.random() * 999);
   let entity = create_entity(
@@ -132,8 +131,8 @@ function update() {
     };
   };
   
-  websockets.forEach((ws) => {
-    ws.send(JSON.stringify({
+  players.forEach((p) => {
+    p.ws.send(JSON.stringify({
       type: "update",
       entities: server_entities,
       context: "Updated"
