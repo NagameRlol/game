@@ -15,11 +15,11 @@ ws.onmessage = (m) => {
     }
     console.log("MSG: " + data.context)
 
-    ws.send({
+    ws.send(JSON.stringify({
         type: "client_update",
         local_player: local_player,
         input: m_array
-    })
+    }));
 };
 ws.onerror = (e) => console.log("Connection error!", e);
 ws.onclose = () => console.log("Closed connection.");

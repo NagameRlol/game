@@ -1,3 +1,4 @@
+const { log } = require("console");
 const http = require("http");
 const WebSocket = require("ws");
 
@@ -8,14 +9,26 @@ const server = http.createServer((req, res) => {
 
 const wss = new WebSocket.Server({ server });
 
-let websockets = [];
 let players = [];
 
-function Player(socket, id, username, entity) {
+function Entity () {
+    this.id = -1;
+    this.name = "Entity";
+    this.color = "#ff0000";
+    this.x = 0.0;
+    this.y = 0.0;
+    this.vx = 0.0;
+    this.vy = 0.0;
+    this.size = 20.0;
+    this.speed = 0.1;
+    this.drag = 0.97;
+    this.owner = -1;
+} 
+
+function Player(socket, id, username) {
   this.socket = socket;
   this.id = id;
   this.username = username;
-  this.entity = entity;
   this.m_array = [false, false, false, false];
 }
 
@@ -42,7 +55,7 @@ wss.on("connection", (ws) => {
     context: "Client connected."
   }));
 
-  let id = Math.floor(Math.random() * 999);
+  let id = Math.floor(Math.random() * 99999);
   let entity = create_entity(
     id,
     "Entity",
@@ -54,7 +67,7 @@ wss.on("connection", (ws) => {
     Math.random() * 15 + 15
   )
 
-  let p = new Player(ws, id, "Player", entity);
+  let p = create_player(ws, id, "Player");
 
   ws.send(JSON.stringify({
     type: "assignPlayer",
@@ -63,11 +76,13 @@ wss.on("connection", (ws) => {
     },
     context: "Assigned player with id: " + id
   }));
+
   entity.owner = p;
 });
 
 wss.on("message", (m) => {
   let data = JSON.parse(m.data);
+  console.log("Recieved: " + m.data);
   switch (data.type) {
     case "client_update":
       let p = find_p_from_id(data.local_player.id);
@@ -99,20 +114,6 @@ for (let i = 0; i < 30; i++) {
     false);
 }
 
-function Entity () {
-    this.id = -1;
-    this.name = "Entity";
-    this.color = "#ff0000";
-    this.x = 0.0;
-    this.y = 0.0;
-    this.vx = 0.0;
-    this.vy = 0.0;
-    this.size = 20.0;
-    this.speed = 0.1;
-    this.drag = 0.97;
-    this.owner;
-} 
-
 function update() {
   let e_len = server_entities.length;
   for (let i = 0; i < e_len; i++) {
@@ -124,29 +125,30 @@ function update() {
     e.vx *= e.drag;
     e.vy *= e.drag;
         
-    if (e.owner.m_array[0]) {
-      e.vx -= e.speed;
-    };
+    if (!(e.owner === -1)) {
+      if (e.owner.m_array[0]) {
+        e.vx -= e.speed;
+      };
 
-    if (e.owner.m_array[1]) {
-      e.vx += e.speed;
-    };
+      if (e.owner.m_array[1]) {
+        e.vx += e.speed;
+      };
 
-    if (e.owner.m_array[2]) {
-      e.vy -= e.speed;
-    };
+      if (e.owner.m_array[2]) {
+        e.vy -= e.speed;
+      };
 
-    if (e.owner.m_array[3]) {
-      e.vy += e.speed;
+      if (e.owner.m_array[3]) {
+        e.vy += e.speed;
+      };
     };
-
   };
   
   players.forEach((p) => {
-    p.ws.send(JSON.stringify({
+    p.socket.send(JSON.stringify({
       type: "update",
       entities: server_entities,
-      context: "Updated"
+      context: "Updated."
     }));
   });
 };
@@ -164,3 +166,9 @@ function create_entity(id, name, color, x, y, vx, vy, size) {
     server_entities.push(e);
     return e
 }
+
+function create_player(socket, id, username) {
+  let p = new Player(socket, id, username);
+  players.push(p);
+  return p;
+};
