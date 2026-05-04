@@ -50,10 +50,21 @@ function find_p_from_id(id) {
 
 wss.on("connection", (ws) => {
   console.log("A client connected.");
+  
   ws.send(JSON.stringify({
     type: "msg",
     context: "Client connected."
   }));
+
+  ws.on("message", (m) => {
+    let data = JSON.parse(m);
+    console.log("Recieved: " + m);
+    switch (data.type) {
+    case "client_update":
+      let p = find_p_from_id(data.player.id);
+      p.m_array = data.input;
+    }; 
+  });
 
   let id = Math.floor(Math.random() * 99999);
   let entity = create_entity(
@@ -70,7 +81,7 @@ wss.on("connection", (ws) => {
   let p = create_player(ws, id, "Player");
 
   ws.send(JSON.stringify({
-    type: "assignPlayer",
+    type: "assign_player",
     player: () => {
       this.id = id;
     },
@@ -78,16 +89,6 @@ wss.on("connection", (ws) => {
   }));
 
   entity.owner = p;
-});
-
-wss.on("message", (m) => {
-  let data = JSON.parse(m.data);
-  console.log("Recieved: " + m.data);
-  switch (data.type) {
-    case "client_update":
-      let p = find_p_from_id(data.local_player.id);
-      p.m_array = data.input;
-  }; 
 });
 
 server.listen(3000, "0.0.0.0", () => {

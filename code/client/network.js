@@ -12,12 +12,15 @@ ws.onmessage = (m) => {
             set_local_entities(data.entities);
             draw();
             break;
+        case "assign_player":
+            local_player = player;
+            break;
     }
     console.log("MSG: " + data.context)
-
+    
     ws.send(JSON.stringify({
         type: "client_update",
-        local_player: local_player,
+        player: local_player,
         input: m_array
     }));
 };
