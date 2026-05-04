@@ -22,14 +22,14 @@ const actions = {
 document.addEventListener('keydown', function(event) {
     const key = event.key.toLowerCase();
     if (actions[key]) {
-            actions[key][0]();
+        actions[key][0]();
     }
 });
 
 document.addEventListener('keyup', function(event) {
     const key = event.key.toLowerCase();
     if (actions[key]) {
-            actions[key][1]();
+        actions[key][1]();
      }
 });
 

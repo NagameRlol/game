@@ -68,7 +68,7 @@ wss.on("connection", (ws) => {
 
 wss.on("message", (m) => {
   let data = JSON.parse(m.data);
-  switch data.type {
+  switch (data.type) {
     case "client_update":
       let p = find_p_from_id(data.local_player.id);
       p.m_array = data.input;
