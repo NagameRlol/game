@@ -22,7 +22,7 @@ function Entity () {
     this.size = 20.0;
     this.speed = 0.1;
     this.drag = 0.97;
-    this.owner = -1;
+    this.owner_id = -1;
 } 
 
 function Player(socket, id, username) {
@@ -32,21 +32,13 @@ function Player(socket, id, username) {
   this.m_array = [false, false, false, false];
 }
 
-function find_p_from_ws(targ_ws) {
-  players.forEach((p) => {
-    if (p.ws === targ_ws) {
-      return p;
-    }
-  });
+function find_p_from_ws(ws) {
+  return players.find(p => p.socket === ws);
 };
 
 function find_p_from_id(id) {
-  players.forEach((p) => {
-    if (p.id === id) {
-      return p;
-    }
-  });
-};
+  return players.find(p => p.id === id);
+}
 
 wss.on("connection", (ws) => {
   console.log("A client connected.");
@@ -67,6 +59,7 @@ wss.on("connection", (ws) => {
   });
 
   let id = Math.floor(Math.random() * 99999);
+
   let entity = create_entity(
     id,
     "Entity",
@@ -82,13 +75,13 @@ wss.on("connection", (ws) => {
 
   ws.send(JSON.stringify({
     type: "assign_player",
-    player: () => {
-      this.id = id;
+    player: {
+      id: id,
     },
     context: "Assigned player with id: " + id
   }));
 
-  entity.owner = p;
+  entity.owner_id = p.id;
 });
 
 server.listen(3000, "0.0.0.0", () => {
@@ -125,23 +118,16 @@ function update() {
 
     e.vx *= e.drag;
     e.vy *= e.drag;
-        
-    if (!(e.owner === -1)) {
-      if (e.owner.m_array[0]) {
-        e.vx -= e.speed;
-      };
+    
+    let owner = find_p_from_id(e.owner_id);
+    if (e.owner_id !== -1 || owner) {
+      if (owner.m_array[0]) e.vx -= e.speed;
 
-      if (e.owner.m_array[1]) {
-        e.vx += e.speed;
-      };
+      if (owner.m_array[1]) e.vx += e.speed;
 
-      if (e.owner.m_array[2]) {
-        e.vy -= e.speed;
-      };
+      if (owner.m_array[2]) e.vy -= e.speed;
 
-      if (e.owner.m_array[3]) {
-        e.vy += e.speed;
-      };
+      if (owner.m_array[3]) e.vy += e.speed;
     };
   };
   
