@@ -20,8 +20,8 @@ function Entity() {
   this.vx = 0;
   this.vy = 0;
   this.size = 20;
-  this.speed = 1.0;
-  this.drag = 0.97;
+  this.speed = 3.0;
+  this.drag = 0.95;
   this.owner_id = -1;
 }
 

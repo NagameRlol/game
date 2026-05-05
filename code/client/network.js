@@ -25,9 +25,9 @@ ws.onerror = (e) => console.log("Connection error!", e);
 ws.onclose = () => console.log("Closed connection.");
 
 setInterval(() => {
-  ws.send(JSON.stringify({
-    type: "client_update",
-    player_id: local_player ? local_player.id : null,
-    input: m_array
-  }));
+    ws.send(JSON.stringify({
+       type: "client_update",
+        player_id: local_player ? local_player.id : null,
+        input: m_array
+    }));
 }, 50);
