@@ -19,7 +19,7 @@ window.addEventListener('load', (event) => {
 });
 
 export function draw() {
-    print(m_array);
+    console.log(m_array);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let e_len = local_entities.length;
     for (let i = 0; i < e_len; i++) {
