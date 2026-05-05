@@ -1,7 +1,7 @@
 import { set_local_entities, draw, m_array, local_player } from "./main.js";
 
 const ws = new WebSocket(
-  "wss://ideal-waffle-944444rv5g4cr5p-3000.app.github.dev/"
+  "wss://cautious-goggles-v7777794r7vf69w4-3000.app.github.dev/"
 );
 
 ws.onopen = () => console.log("Opened connection.");
