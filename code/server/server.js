@@ -110,7 +110,7 @@ server.listen(3000, "0.0.0.0", () => {
   console.log("Listening on port: 3000.");
 });
 
-setInterval(update, 10);
+setInterval(update, 50);
 
 function update() {
   for (let i = 0; i < server_entities.length; i++) {
