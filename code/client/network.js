@@ -13,7 +13,7 @@ ws.onmessage = (m) => {
             draw();
             break;
         case "assign_player":
-            local_player = player;
+            local_player = data.player;
             break;
     }
     console.log("MSG: " + data.context)
