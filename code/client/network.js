@@ -1,4 +1,5 @@
-import { set_local_entities, draw, m_array, set_local_player } from "./main.js";
+import { set_local_entities, draw, set_local_player } from "./main.js";
+import { m_array } from "./inputListener.js";
 
 const ws = new WebSocket("wss://cautious-goggles-v7777794r7vf69w4-3000.app.github.dev/");
 

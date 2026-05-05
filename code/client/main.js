@@ -4,9 +4,6 @@ export let local_player;
 let canvas;
 let ctx;
 
-// m_array[0] is left, m_array[1] is right, m_array[2] is up and m_array[3] is down.
-export let m_array = [false, false, false, false];
-
 window.addEventListener('load', (event) => {
     canvas = document.getElementById("canvas");
     ctx = canvas.getContext("2d");
@@ -19,7 +16,6 @@ window.addEventListener('load', (event) => {
 });
 
 export function draw() {
-    console.log(m_array);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let e_len = local_entities.length;
     for (let i = 0; i < e_len; i++) {
