@@ -24,7 +24,6 @@ document.addEventListener('keydown', function(event) {
     if (actions[key]) {
         actions[key][0]();
     }
-    console.log(m_array);
 });
 
 document.addEventListener('keyup', function(event) {
@@ -32,6 +31,5 @@ document.addEventListener('keyup', function(event) {
     if (actions[key]) {
         actions[key][1]();
      }
-    console.log(m_array);
 });
 
