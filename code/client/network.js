@@ -19,13 +19,15 @@ ws.onmessage = (m) => {
   }
 
   console.log("MSG: " + data.context);
+};
 
+ws.onerror = (e) => console.log("Connection error!", e);
+ws.onclose = () => console.log("Closed connection.");
+
+setInterval(() => {
   ws.send(JSON.stringify({
     type: "client_update",
     player_id: data.player ? data.player.id : null,
     input: m_array
   }));
-};
-
-ws.onerror = (e) => console.log("Connection error!", e);
-ws.onclose = () => console.log("Closed connection.");
+}, 50);
