@@ -41,3 +41,7 @@ export function draw() {
 export function set_local_entities(array) {
     local_entities = array;
 }
+
+export function set_local_player(p) {
+    local_player = p;
+}
