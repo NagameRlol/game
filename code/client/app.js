@@ -1,4 +1,4 @@
-import { interpolate } from "./utils";
+import { interpolate } from "./utils.js";
 
 let local_entities = [];
 export let local_player;
