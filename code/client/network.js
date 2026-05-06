@@ -29,9 +29,10 @@ setInterval(() => {
   let chat_input = document.getElementById("chat_input");
 
   let full_text = name_input.text + ": " + chat_input.text;
-    ws.send(JSON.stringify({
-       type: "client_update",
-        player: { id: local_player ? local_player.id : null , username: full_text },
-        input: m_array
-    }));
+
+  ws.send(JSON.stringify({
+    type: "client_update",
+    player: { id: local_player ? local_player.id : null , username: full_text },
+    input: m_array
+  }));
 }, 50);
