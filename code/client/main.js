@@ -34,9 +34,8 @@ export function draw() {
         ctx.stroke();
 
         ctx.fillStyle = "black";
-        ctx.fillText(rx, ry + e.size / 2 + 10);
+        ctx.fillText(e.name, rx, ry + e.size / 2 + 10);
         ctx.font = "20px serif";
-        ctx.fillText(e.name, 0, 100);
     };
 }
 
