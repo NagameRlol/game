@@ -1,3 +1,5 @@
+import { interpolate } from "./utils";
+
 let local_entities = [];
 export let local_player;
 
@@ -21,8 +23,8 @@ export function draw() {
     for (let i = 0; i < e_len; i++) {
 
         let e = local_entities[i];
-        let rx = e.x - e.size / 2;
-        let ry = e.y - e.size / 2
+        let rx = e.renderX - e.size / 2;
+        let ry = e.renderY - e.size / 2;
         
         ctx.fillStyle = e.color;
         ctx.strokeStyle = "#232323";
@@ -36,13 +38,21 @@ export function draw() {
         ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
+
+        e.renderX = interpolate(e.renderX, e.x, 0.1);
+        e.renderY = interpolate(e.renderY, e.y, 0.1);
     };
 }
 
 export function set_local_entities(array) {
-    local_entities = array;
+    local_entities = array.map(e => ({
+        ...e,
+        renderX: e.x,
+        renderY: e.y
+    }));
 }
 
 export function set_local_player(p) {
     local_player = p;
 }
+

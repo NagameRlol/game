@@ -194,10 +194,6 @@ function kill(entity_id) {
   remove_from_array(server_entities, find_e_from_id(entity_id));
 }
 
-function interpolate(from, to, delta){
-  return from + (to - from) * delta;
-}
-
 function remove_from_array(array, what) {
     array.forEach((item, index) => {
         if (item === what) {
