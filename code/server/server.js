@@ -20,8 +20,8 @@ function Entity() {
   this.vx = 0;
   this.vy = 0;
   this.size = 20;
-  this.speed = 3.0;
-  this.drag = 0.95;
+  this.speed = 5.0;
+  this.drag = 0.75;
   this.owner_id = -1;
 }
 
@@ -94,7 +94,6 @@ wss.on("connection", (ws) => {
 
     switch (data.type) {
       case "client_update": {
-        console.log(data.input);
         let p = find_p_from_id(data.player_id);
         if (p) p.m_array = [...data.input];
         break;
