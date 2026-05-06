@@ -126,10 +126,10 @@ function update() {
     let owner = find_p_from_id(e.owner_id);
 
     if (e.owner_id !== -1 && owner) {
-      if (owner.m_array[0]) e.vx -= e.speed;
-      if (owner.m_array[1]) e.vx += e.speed;
-      if (owner.m_array[2]) e.vy -= e.speed;
-      if (owner.m_array[3]) e.vy += e.speed;
+      if (owner.m_array[0]) apply_force(e, e.speed, -Math.PI / 2);
+      if (owner.m_array[1]) apply_force(e, e.speed, Math.PI / 2);
+      if (owner.m_array[2]) apply_force(e, e.speed, 0.0);
+      if (owner.m_array[3]) apply_force(e, e.speed, Math.PI);
     }
   }
 
@@ -140,4 +140,13 @@ function update() {
       context: "Updated."
     }));
   });
+}
+
+function distance_to(from_x, from_y, to_x, to_y) {
+  return Math.sqrt(Math.pow(to_x - from_x, 2) + Math.pow(to_y - from_y, 2));
+}
+
+function apply_force(entity, num, angle_rad) {
+  entity.vx += Math.cos(angle_rad - Math.PI / 2) * num;
+  entity.vy += Math.sin(angle_rad - Math.PI / 2) * num;
 }
