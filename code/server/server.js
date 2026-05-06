@@ -68,7 +68,7 @@ wss.on("connection", (ws) => {
 
   let entity = create_entity(
     id,
-    "Entity",
+    p.username,
     "#FF0000",
     300 + Math.random() * 300,
     300 + Math.random() * 300,

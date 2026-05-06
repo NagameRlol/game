@@ -27,11 +27,16 @@ export function draw() {
         ctx.fillStyle = e.color;
         ctx.strokeStyle = "#232323";
         ctx.lineWidth = 2.5;
-
+        
         ctx.beginPath();
         ctx.roundRect(rx, ry, e.size, e.size, e.size / 4);
         ctx.fill();
         ctx.stroke();
+
+        ctx.fillStyle = "black";
+        ctx.fillText(rx, ry + e.size / 2 + 10);
+        ctx.font = "20px serif";
+        ctx.fillText(e.name, 0, 100);
     };
 }
 
