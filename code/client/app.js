@@ -16,6 +16,7 @@ window.addEventListener('load', (event) => {
     let center_x = canvas.width / 2;
     let center_y = canvas.height / 2;
 });
+    setInterval(draw, 50/3);
 
 export function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
