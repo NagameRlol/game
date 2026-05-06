@@ -1,4 +1,4 @@
-import { set_local_entities, draw, set_local_player, local_player } from "./main.js";
+import { set_local_entities, draw, set_local_player, local_player } from "./app.js";
 import { m_array } from "./inputListener.js";
 
 const ws = new WebSocket("wss://effective-succotash-wjjjjjp6jjqf5q4j-3000.app.github.dev/");
@@ -25,9 +25,10 @@ ws.onerror = (e) => console.log("Connection error!", e);
 ws.onclose = () => console.log("Closed connection.");
 
 setInterval(() => {
+  let username_input_box = document.getElementById("username_input")
     ws.send(JSON.stringify({
        type: "client_update",
-        player_id: local_player ? local_player.id : null,
+        player: { local_player.id, username_input_box },
         input: m_array
     }));
 }, 50);
