@@ -14,13 +14,14 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 canvas {
-  border: 6px solid black;
-  z-index: -1;
+  border: 8px solid #b1b8c8;
+  border-radius: 8px;
 }
 
-body canvas, #overlay {
-  position: absolute;
+#overlay {
+    align-self: center;
 }
 
 #input {
