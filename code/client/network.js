@@ -35,7 +35,7 @@ setInterval(() => {
     player: { 
       id: local_player ? local_player.id : null, 
       username: name_input.value + ": " + chat_input.value,
-      color: color_input.value.toString()
+      color: color_input.value
     },
     input: m_array
   }));

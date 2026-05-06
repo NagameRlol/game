@@ -98,7 +98,8 @@ wss.on("connection", (ws) => {
       case "client_update": {
         let p = find_p_from_id(data.player.id);
         if (p) {
-          p.m_array = [...data.input];
+          p.m_array = [...data.input];~
+          console.log(data.color)
           p.color = data.color;
           p.username = data.player.username;
         }
