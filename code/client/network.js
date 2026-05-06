@@ -28,12 +28,15 @@ setInterval(() => {
   let name_input = document.getElementById("name_input");
   let chat_input = document.getElementById("chat_input");
   let color_input = document.getElementById("color_input");
+  let color_text = document.getElementById("color_text");
 
+  color_text.value = color_input.value;
+  
   ws.send(JSON.stringify({
     type: "client_update",
     player: { 
       id: local_player ? local_player.id : null, 
-      username: name_input.value + ": " + chat_input.value ,
+      username: name_input.value + ": " + chat_input.value,
       color: color_input.value
     },
     input: m_array

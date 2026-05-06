@@ -82,7 +82,7 @@ wss.on("connection", (ws) => {
 
   ws.send(JSON.stringify({
     type: "assign_player",
-    player: { id: id, username: "no_name" },
+    player: { id: id, username: "no_name", color: p.color },
     context: "Assigned player with id: " + id
   }));
 
@@ -99,6 +99,7 @@ wss.on("connection", (ws) => {
         let p = find_p_from_id(data.player.id);
         if (p) {
           p.m_array = [...data.input];
+          p.color = data.color;
           p.username = data.player.username;
         }
         break;
