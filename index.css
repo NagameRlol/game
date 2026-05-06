@@ -15,5 +15,7 @@ p {
 }
 
 #input {
-    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
