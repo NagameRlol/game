@@ -1,4 +1,4 @@
-import { set_local_entities, draw, set_local_player, local_player } from "./app.js";
+import { set_local_entities, set_local_player, local_player } from "./app.js";
 import { m_array } from "./inputListener.js";
 
 const ws = new WebSocket("wss://effective-succotash-wjjjjjp6jjqf5q4j-3000.app.github.dev/");
@@ -11,7 +11,6 @@ ws.onmessage = (m) => {
   switch (data.type) {
     case "update":
       set_local_entities(data.entities);
-      draw();
       break;
     case "assign_player":
       set_local_player(data.player);
