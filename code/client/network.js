@@ -28,7 +28,7 @@ setInterval(() => {
   let username_input_box = document.getElementById("username_input")
     ws.send(JSON.stringify({
        type: "client_update",
-        player: { id: local_player.id, username: username_input_box },
+        player: { id: local_player ? local_player.id : null , username: username_input_box.value },
         input: m_array
     }));
 }, 50);
