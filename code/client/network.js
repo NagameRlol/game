@@ -30,7 +30,7 @@ setInterval(() => {
   let color_input = document.getElementById("color_input");
   let color_text = document.getElementById("color_text");
 
-  color_text.value = color_input.value;
+  color_text.value = color_input.value.toString();
   
   ws.send(JSON.stringify({
     type: "client_update",
