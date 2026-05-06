@@ -21,8 +21,9 @@ function Entity() {
   this.vy = 0;
   this.size = 20;
   this.speed = 5.0;
-  this.drag = 0.75;
+  this.drag = 0.7;
   this.owner_id = -1;
+  this.shape;
 }
 
 function Player(socket, id, username) {
@@ -110,7 +111,7 @@ server.listen(3000, "0.0.0.0", () => {
   console.log("Listening on port: 3000.");
 });
 
-setInterval(update, 25);
+setInterval(update, 50);
 
 function update() {
   for (let i = 0; i < server_entities.length; i++) {

@@ -30,4 +30,4 @@ setInterval(() => {
         player_id: local_player ? local_player.id : null,
         input: m_array
     }));
-}, 25);
+}, 50);
