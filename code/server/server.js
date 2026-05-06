@@ -8,6 +8,8 @@ const server = http.createServer((req, res) => {
 
 const wss = new WebSocket.Server({ server });
 
+const PHYSICS_PUSH_FORCE = 1;
+
 let players = [];
 let server_entities = [];
 
@@ -24,6 +26,10 @@ function Entity() {
   this.drag = 0.7;
   this.owner_id = -1;
   this.shape;
+
+  this.max_hp = 100;
+  this.hp = this.max_hp;
+  this.hit_dmg = 0.1;
 }
 
 function Player(socket, id, username) {
@@ -40,6 +46,10 @@ function find_p_from_ws(ws) {
 
 function find_p_from_id(id) {
   return players.find(p => p.id === id);
+}
+
+function find_e_from_id(id) {
+  return server_entities.find(e => e.id === id);
 }
 
 function create_entity(id, name, color, x, y, vx, vy, size) {
@@ -75,7 +85,7 @@ wss.on("connection", (ws) => {
     300 + Math.random() * 300,
     0,
     0,
-    Math.random() * 15 + 15
+    Math.random() * 60 + 5
   );
 
   entity.owner_id = p.id;
@@ -98,9 +108,8 @@ wss.on("connection", (ws) => {
       case "client_update": {
         let p = find_p_from_id(data.player.id);
         if (p) {
-          p.m_array = [...data.input];~
-          console.log(data.color)
-          p.color = data.color;
+          p.m_array = [...data.input];
+          p.color = data.player.color;
           p.username = data.player.username;
         }
         break;
@@ -121,7 +130,7 @@ setInterval(update, 50);
 
 function update() {
   for (let i = 0; i < server_entities.length; i++) {
-    let e = server_entities[i];
+    const e = server_entities[i];
 
     e.x += e.vx;
     e.y += e.vy;
@@ -129,7 +138,7 @@ function update() {
     e.vx *= e.drag;
     e.vy *= e.drag;
 
-    let owner = find_p_from_id(e.owner_id);
+    const owner = find_p_from_id(e.owner_id);
 
     if (e.owner_id !== -1 && owner) {
       e.name = owner.username;
@@ -139,6 +148,24 @@ function update() {
       if (owner.m_array[2]) apply_force(e, e.speed, 0.0);
       if (owner.m_array[3]) apply_force(e, e.speed, Math.PI);
     }
+
+    server_entities.forEach((other) => {
+      if (other === e) return;
+
+      let distance = get_distance(e.x, e.y, other.x, other.y);
+      if (distance < e.size && distance > 0) {
+        const norm_x = (other.x - e.x) / distance;
+        const norm_y = (other.y - e.y) / distance;
+        const force = (e.size - distance) * PHYSICS_PUSH_FORCE;
+
+        e.vx -= norm_x * force;
+        e.vy -= norm_y * force;
+        other.vx += norm_x * force;
+        other.vy += norm_y * force;
+
+
+      }
+    });
   }
 
   players.forEach(p => {
@@ -150,11 +177,32 @@ function update() {
   });
 }
 
-function distance_to(from_x, from_y, to_x, to_y) {
+function get_distance(from_x, from_y, to_x, to_y) {
   return Math.sqrt(Math.pow(to_x - from_x, 2) + Math.pow(to_y - from_y, 2));
 }
 
 function apply_force(entity, num, angle_rad) {
   entity.vx += Math.cos(angle_rad - Math.PI / 2) * num;
   entity.vy += Math.sin(angle_rad - Math.PI / 2) * num;
+}
+
+function get_angle(from_x, from_y, to_x, to_y) {
+  return Math.atan((to_y - from_y) / (to_x - from_x)) + Math.PI / 2
+}
+
+function kill(entity_id) {
+  remove_from_array(server_entities, find_e_from_id(entity_id));
+}
+
+function interpolate(from, to, delta){
+  return from + (to - from) * delta;
+}
+
+function remove_from_array(array, what) {
+    array.forEach((item, index) => {
+        if (item === what) {
+            array.splice(index, 1);
+        }
+    });
+    return array;
 }

@@ -29,7 +29,6 @@ setInterval(() => {
   let chat_input = document.getElementById("chat_input");
   let color_input = document.getElementById("color_input");
   let color = color_input.value
-  console.log(color);
 
   ws.send(JSON.stringify({
     type: "client_update",
