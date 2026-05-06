@@ -4,6 +4,12 @@ body {
 
 h1 {
     text-align: center;
-    color: rgb(102, 102, 146);
+    color: rgb(85, 85, 136);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(134, 134, 164);
     font-family: Arial, Helvetica, sans-serif;
 }

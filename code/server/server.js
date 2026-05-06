@@ -129,6 +129,8 @@ function update() {
     let owner = find_p_from_id(e.owner_id);
 
     if (e.owner_id !== -1 && owner) {
+      e.name = owner.username;
+
       if (owner.m_array[0]) apply_force(e, e.speed, -Math.PI / 2);
       if (owner.m_array[1]) apply_force(e, e.speed, Math.PI / 2);
       if (owner.m_array[2]) apply_force(e, e.speed, 0.0);

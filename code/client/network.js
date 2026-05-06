@@ -25,10 +25,13 @@ ws.onerror = (e) => console.log("Connection error!", e);
 ws.onclose = () => console.log("Closed connection.");
 
 setInterval(() => {
-  let username_input_box = document.getElementById("username_input")
+  let name_input = document.getElementById("name_input");
+  let chat_input = document.getElementById("chat_input");
+
+  let full_text = name_input.text + ": " + chat_input.text;
     ws.send(JSON.stringify({
        type: "client_update",
-        player: { id: local_player ? local_player.id : null , username: username_input_box.value },
+        player: { id: local_player ? local_player.id : null , username: full_text },
         input: m_array
     }));
 }, 50);
