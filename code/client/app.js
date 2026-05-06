@@ -36,6 +36,9 @@ export function draw() {
         ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
+
+        e.x += e.vx;
+        e.y += e.vy;
     };
 }
 
