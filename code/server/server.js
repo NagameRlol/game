@@ -30,6 +30,7 @@ function Player(socket, id, username) {
   this.socket = socket;
   this.id = id;
   this.username = username;
+  this.color = "#FF0000";
   this.m_array = [false, false, false, false];
 }
 
@@ -130,7 +131,7 @@ function update() {
 
     if (e.owner_id !== -1 && owner) {
       e.name = owner.username;
-
+      e.color = owner.color;
       if (owner.m_array[0]) apply_force(e, e.speed, -Math.PI / 2);
       if (owner.m_array[1]) apply_force(e, e.speed, Math.PI / 2);
       if (owner.m_array[2]) apply_force(e, e.speed, 0.0);

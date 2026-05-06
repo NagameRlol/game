@@ -27,12 +27,15 @@ ws.onclose = () => console.log("Closed connection.");
 setInterval(() => {
   let name_input = document.getElementById("name_input");
   let chat_input = document.getElementById("chat_input");
-
-  let full_text = name_input.text + ": " + chat_input.text;
+  let color_input = document.getElementById("color_input");
 
   ws.send(JSON.stringify({
     type: "client_update",
-    player: { id: local_player ? local_player.id : null , username: full_text },
+    player: { 
+      id: local_player ? local_player.id : null, 
+      username: name_input.value + ": " + chat_input.value ,
+      color: color_input.value
+    },
     input: m_array
   }));
 }, 50);
