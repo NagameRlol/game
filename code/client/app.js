@@ -20,10 +20,7 @@ window.addEventListener('load', (event) => {
 
 export function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    let e_len = local_entities.length;
-    for (let i = 0; i < e_len; i++) {
-
-        let e = local_entities[i];
+    local_entities.forEach((e) => {
         let rx = e.renderX - e.size / 2;
         let ry = e.renderY - e.size / 2;
         
@@ -42,12 +39,14 @@ export function draw() {
         ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
-    };
+    });
 }
 
 export function set_local_entities(array) {
     local_entities = array.map(e => ({
         ...e,
+        x: e.x,
+        y: e.y,
         renderX: e.x,
         renderY: e.y
     }));
