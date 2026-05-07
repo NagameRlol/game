@@ -27,8 +27,8 @@ export function draw() {
         let rx = e.renderX - e.size / 2;
         let ry = e.renderY - e.size / 2;
         
-        e.x += interpolate(e.renderX, e.x, .1);
-        e.y += interpolate(e.renderY, e.y, .1);
+        e.renderX += interpolate(e.renderX, e.x, .1);
+        e.renderY += interpolate(e.renderY, e.y, .1);
 
         ctx.fillStyle = e.color;
         ctx.strokeStyle = "#232323";
