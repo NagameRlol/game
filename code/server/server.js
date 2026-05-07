@@ -22,14 +22,15 @@ function Entity() {
   this.vx = 0;
   this.vy = 0;
   this.size = 20;
-  this.speed = 5.0;
   this.drag = 0.7;
   this.owner_id = -1;
   this.shape;
 
+  this.team = 0;
   this.max_hp = 100;
   this.hp = this.max_hp;
   this.hit_dmg = 0.1;
+  this.speed = 5.0;
 }
 
 function Player(socket, id, username) {
@@ -52,15 +53,13 @@ function find_e_from_id(id) {
   return server_entities.find(e => e.id === id);
 }
 
-function create_entity(id, name, color, x, y, vx, vy, size) {
+function create_entity(id, name, color, x, y, size) {
   let e = new Entity();
   e.id = id;
   e.name = name;
   e.color = color;
   e.x = x;
   e.y = y;
-  e.vx = vx;
-  e.vy = vy;
   e.size = size;
   server_entities.push(e);
   return e;
@@ -71,6 +70,8 @@ function create_player(socket, id, username) {
   players.push(p);
   return p;
 }
+
+create_entity(-1, "Dummy", "#f3eaff", 400, 200, 50)
 
 wss.on("connection", (ws) => {
   let id = Math.floor(Math.random() * 99999);
@@ -83,8 +84,6 @@ wss.on("connection", (ws) => {
     "#FF0000",
     300 + Math.random() * 300,
     300 + Math.random() * 300,
-    0,
-    0,
     Math.random() * 60 + 5
   );
 
@@ -150,20 +149,16 @@ function update() {
     }
 
     server_entities.forEach((other) => {
-      if (other === e) return;
-
+      if (other === e || other.team === e.team) return;
       let distance = get_distance(e.x, e.y, other.x, other.y);
       if (distance < e.size && distance > 0) {
         const norm_x = (other.x - e.x) / distance;
         const norm_y = (other.y - e.y) / distance;
         const force = (e.size - distance) * PHYSICS_PUSH_FORCE;
-
         e.vx -= norm_x * force;
         e.vy -= norm_y * force;
         other.vx += norm_x * force;
         other.vy += norm_y * force;
-
-
       }
     });
   }
