@@ -27,6 +27,9 @@ export function draw() {
         let rx = e.renderX - e.size / 2;
         let ry = e.renderY - e.size / 2;
         
+        e.x = interpolate(e.renderX, e.x, 99);
+        e.y = interpolate(e.renderY, e.y, 99);
+
         ctx.fillStyle = e.color;
         ctx.strokeStyle = "#232323";
         ctx.lineWidth = 2.5;
@@ -39,9 +42,6 @@ export function draw() {
         ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
-
-        e.renderX = interpolate(e.renderX, e.x, 99);
-        e.renderY = interpolate(e.renderY, e.y, 99);
     };
 }
 
