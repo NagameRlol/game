@@ -21,8 +21,8 @@ window.addEventListener('load', (event) => {
 export function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     local_entities.forEach((e) => {
-        let rx = e.renderX - e.size / 2;
-        let ry = e.renderY - e.size / 2;
+        let rx = e.x - e.size / 2;
+        let ry = e.y - e.size / 2;
         
         e.renderX += interpolate(e.renderX, e.x, .1);
         e.renderY += interpolate(e.renderY, e.y, .1);
@@ -45,8 +45,6 @@ export function draw() {
 export function set_local_entities(array) {
     local_entities = array.map(e => ({
         ...e,
-        x: e.x,
-        y: e.y,
         renderX: e.x,
         renderY: e.y
     }));
