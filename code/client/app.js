@@ -40,8 +40,8 @@ export function draw() {
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
 
-        e.renderX = interpolate(e.renderX, e.x, 2);
-        e.renderY = interpolate(e.renderY, e.y, 2);
+        e.renderX = interpolate(e.renderX, e.x, 99);
+        e.renderY = interpolate(e.renderY, e.y, 99);
     };
 }
 
