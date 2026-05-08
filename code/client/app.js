@@ -37,7 +37,9 @@ export function draw() {
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
 
-        // cheap interpolation
+        ctx.fillStyle = "green";
+        ctx.roundRect(rx, ry + e.size / 2, e.size * (e.hp, e.max_hp), 10, 5);
+
         e.x += e.vx * (1/3);
         e.y += e.vy * (1/3);
     });
