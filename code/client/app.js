@@ -41,15 +41,12 @@ export function draw() {
 
         e.x += e.vx * (1/3);
         e.y += e.vy * (1/3);
+        e.angle += 0.01;
     });
 }
 
 export function set_local_entities(array) {
-    local_entities = array.map(e => ({
-        ...e,
-        renderX: e.x,
-        renderY: e.y
-    }));
+    local_entities = array;
 }
 
 export function set_local_player(p) {
