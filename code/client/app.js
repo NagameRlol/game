@@ -23,9 +23,6 @@ export function draw() {
     local_entities.forEach((e) => {
         let rx = e.x - e.size / 2;
         let ry = e.y - e.size / 2;
-        
-        e.renderX += interpolate(e.renderX, e.x, .1);
-        e.renderY += interpolate(e.renderY, e.y, .1);
 
         ctx.fillStyle = e.color;
         ctx.strokeStyle = "#232323";
@@ -41,6 +38,9 @@ export function draw() {
         ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
+
+        e.x += vx * 0.1;
+        e.y += vy * 0.1;
     });
 }
 

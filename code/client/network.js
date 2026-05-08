@@ -1,7 +1,7 @@
 import { set_local_entities, set_local_player, local_player } from "./app.js";
 import { m_array } from "./inputListener.js";
 
-const ws = new WebSocket("wss://improved-fortnight-rvvvvvq9v74f56xq-3000.app.github.dev/");
+const ws = new WebSocket("wss://-3000.app.github.dev/");
 
 ws.onopen = () => console.log("Opened connection.");
 
