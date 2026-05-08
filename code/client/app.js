@@ -39,6 +39,8 @@ export function draw() {
 
         ctx.fillStyle = "green";
         ctx.roundRect(rx, ry + e.size / 2, e.size * (e.hp, e.max_hp), 10, 5);
+        ctx.fill();
+        ctx.stroke();
 
         e.x += e.vx * (1/3);
         e.y += e.vy * (1/3);
