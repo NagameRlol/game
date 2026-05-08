@@ -28,20 +28,18 @@ export function draw() {
         ctx.strokeStyle = "#232323";
         ctx.lineWidth = 2.5;
         
-        ctx.rotate(e.angle);
         ctx.beginPath();
         ctx.roundRect(rx, ry, e.size, e.size, e.size / 4);
         ctx.fill();
         ctx.stroke();
 
-        ctx.rotate(0.0);
         ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
 
+        // cheap interpolation
         e.x += e.vx * (1/3);
         e.y += e.vy * (1/3);
-        e.angle += 0.01;
     });
 }
 
