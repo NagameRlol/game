@@ -39,7 +39,7 @@ export function draw() {
         ctx.fillText(e.name, rx, ry - e.size / 2);
         
         ctx.fillStyle = "#37ff00";
-        ctx.roundRect(rx, ry + e.size / 2, e.size * (e.hp, e.max_hp), 10, 5);
+        ctx.roundRect(rx, ry + e.size / 2, e.size * (e.hp / e.max_hp), 10, 5);
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
