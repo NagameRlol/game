@@ -39,8 +39,8 @@ export function draw() {
         ctx.font = "20px serif";
         ctx.fillText(e.name, rx, ry - e.size / 2);
 
-        e.x += e.vx * 0.3333;
-        e.y += e.vy * 0.3333;
+        e.x += e.vx * (1/3);
+        e.y += e.vy * (1/3);
     });
 }
 
